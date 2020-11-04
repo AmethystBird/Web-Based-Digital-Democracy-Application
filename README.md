@@ -1,3 +1,1 @@
-# Web-Based Digital Democracy Application
-
-# The basis of this project is to create a web-based application that allows for the UK general election system to operate in an electronic/digital format, rather than in a physical one. It will be developed with HTML5, CSS, JavaScript, with ASP.NET Core and a JavaScript SDK. The IDE (integrated development environment) that will be used is Visual Studio. This project is principally meant as a model for representatively democratic governments to consider as a base for electronic democracy. And in this, as a framework to end issues with traditional election systems and to adopt electronic democracy as a better, and more viable alternative.
+# test
