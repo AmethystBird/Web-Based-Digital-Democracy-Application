@@ -1,20 +1,37 @@
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.exe
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.deps.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.runtimeconfig.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.runtimeconfig.dev.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.dll
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.pdb
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.csprojAssemblyReference.cache
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.AssemblyInfoInputs.cache
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.AssemblyInfo.cs
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.csproj.CoreCompileInputs.cache
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.RazorTargetAssemblyInfo.cache
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\staticwebassets\UK Electronic Democracy.StaticWebAssets.Manifest.cache
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\staticwebassets\UK Electronic Democracy.StaticWebAssets.xml
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.dll
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.pdb
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.genruntimeconfig.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.exe
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.deps.json
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.runtimeconfig.json
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.runtimeconfig.dev.json
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.dll
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.pdb
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.Views.dll
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.Views.pdb
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.csprojAssemblyReference.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.AssemblyInfoInputs.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.AssemblyInfo.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.csproj.CoreCompileInputs.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.RazorAssemblyInfo.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.RazorAssemblyInfo.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.TagHelpers.input.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.TagHelpers.output.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.RazorCoreGenerate.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.RazorTargetAssemblyInfo.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.RazorTargetAssemblyInfo.cs
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.Views.pdb
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\staticwebassets\UK Electronic Democracy.StaticWebAssets.Manifest.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\staticwebassets\UK Electronic Democracy.StaticWebAssets.xml
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.dll
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.pdb
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.genruntimeconfig.cache
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.csproj.CopyComplete
