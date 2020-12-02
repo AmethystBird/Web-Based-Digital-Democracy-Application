@@ -1,6 +1,5 @@
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.exe
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.deps.json
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\bin\Debug\netcoreapp3.1\UK Electronic Democracy.runtimeconfig.json
@@ -35,3 +34,4 @@ C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Ele
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.pdb
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.genruntimeconfig.cache
 C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\UK Electronic Democracy.csproj.CopyComplete
+C:\Users\sebas\Desktop\Entrance Folder\University\UK Electronic Democracy\UK Electronic Democracy\obj\Debug\netcoreapp3.1\scopedcss\bundle\UK Electronic Democracy.styles.css

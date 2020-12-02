@@ -7,20 +7,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap 4 Example</title>
+    <title>UK Government General Elections</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
 
+    <script>
+        function changeInfo(clicked_id) {
+            //var element = document.getElementById("rightTab");
+            //element.innerHTML = "Text changed";
+
+            if (clicked_id == "leftTab") {
+                //body - unconditional
+                document.getElementById("unconditionalBodyText").innerHTML = "Welcome to the UK General Election site. You can register an account which will give you access to voting for your local MP in the next general election. This site also allows you to sign up as a candidate in an election. Below you may view, and search by filtering, all incumbent MPs in relation to their constituency seats.";
+
+                //body - home
+                document.getElementById("lowerBodyText").innerHTML = "Last election results and incumbent government";
+            }
+            else if (clicked_id == "centreTab") {
+                //body - unconditional
+                document.getElementById("unconditionalBodyText").innerHTML = "Click to vote";
+
+                //body - WIP
+                document.getElementById("lowerBodyText").innerHTML = "Selectable list of candidates from your constituency";
+            }
+            else if (clicked_id == "rightTab") {
+                //body - unconditional
+                document.getElementById("unconditionalBodyText").innerHTML = "Election-related information and decisions";
+
+                //body - WIP
+                document.getElementById("lowerBodyText").innerHTML = "Amendable personal details";
+            }
+            else if (clicked_id == "loginOrReg") {
+                //body - unconditional
+                document.getElementById("unconditionalBodyText").innerHTML = "Login or register?";
+
+                //body - loginOrReg
+
+
+                var oldContents = document.getElementById("homeBody");
+                oldContents.style.display = "none";
+            }
+
+            /*document.getElementById("leftTab").innerHTML = "Text changed";
+            document.getElementById("centreTab").innerHTML = "Text changed";
+            document.getElementById("rightTab").innerHTML = "Text changed";*/
+        }
+
+        function searchConstituency() {
+            var input = document.getElementById("userInput");
+            var filter = input.value.toLowerCase();
+            var table = document.getElementById("MPConstituencyTable")
+            tr = table.getElementsByTagName("tr");
+
+            var td;
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    var textValue = td.textContent || td.innerText;
+                    if (textValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    }
+                    else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        $(window).resize(function () {
+
+        }).resize();
+
+    </script>
+</head>
+<style>
+    body {
+        color: #f0f0f0;
+        background-color: #101010;
+    }
+    .btn {
+        color: #f0f0f0;
+        background-color: #202020;
+    }
+    .btn:hover {
+        color: #f0f0f0;
+        background-color: #204080;
+    }
+    table, td, th {
+        border: 1px solid #f0f0f0;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        overflow: scroll;
+    }
+    th, td {
+        height: 48px;
+        padding: 16px;
+        color: #f0f0f0;
+    }
+    th {
+        text-align: center;
+        background-color: #3060c0;
+    }
+    td {
+        text-align: left;
+    }
+    tr:nth-child(even) {background-color: #183048;}
+    tr:nth-child(odd) {background-color: #284058;}
+
+    thead, tbody {display: block; }
+
+    tbody {
+        height: 256px;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    tbody td, thead th {
+        width: 20%;
+    }
+
+    p {
+        display: block;
+        margin: 2em;
+    }
+
+    h3 {
+        display: block;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+
+    input {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #f0f0f0;
+        margin-bottom: 0.5em;
+    }
+
+</style>
+<body>
     <div class="container-fluid">
-        <h1>My First Bootstrap Page</h1>
-        <p>This is some text.</p>
-    </div>
+
+        <!--Login/Register-->
+        <div class="row">
+            <div class="col-sm-10">
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn-block btn"><h5 id="loginOrReg" onclick="changeInfo(this.id)" class="text-center">Login/Register</h5></button>
+            </div>
+        </div>
+
+        <!--Title of Page-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">UK Government</h1>
+                <h1 class="text-center">General Elections</h1>
+            </div>
+        </div>
+
+        <!--Tabs-->
+        <div class="row">
+            <div class="col-sm-3">
+                <button type="button" class="btn-block btn"><h2 id="leftTab" onclick="changeInfo(this.id)" class="text-center">Home</h2></button>
+            </div>
+            <div class="col-sm-6">
+                <!--<h2 id="VN" class="text-center">Vote Now</h2>-->
+                <button type="button" class="btn-block btn"><h2 id="centreTab" onclick="changeInfo(this.id)" class="text-center">Vote Now</h2></button>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn-block btn"><h2 id="rightTab" onclick="changeInfo(this.id)" class="text-center">My Page</h2></button>
+            </div>
+        </div>
+
+        <!--Body Section - Unconditional-->
+        <div class="row">
+            <div class="col-sm-12">
+                <p id="unconditionalBodyText" class="text-center">Welcome to the UK General Election site. You can register an account which will give you access to voting for your local MP in the next general election. This site also allows you to sign up as a candidate in an election. Below you may view, and search by filtering, all incumbent MPs in relation to their constituency seats.</p>
+            </div>
+        </div>
+
+        <!--Body Section - Home-->
+        <div class="row" id="homeBody">
+            <div class="col-sm-12">
+                <h3 id="lowerBodyText" class="text-left">Last election results and incumbent government</h3>
+
+                <input type="text" id="userInput" onkeyup="searchConstituency()" placeholder="Search MPs based on Constituency..." />
+
+                <table id="MPConstituencyTable">
+                    <thead>
+                        <tr>
+                            <th>Constituency Seat</th>
+                            <th>Country</th>
+                            <th>Full Name</th>
+                            <th>Political Affiliation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Aldershot</td>
+                            <td>England</td>
+                            <td>Leo Docherty</td>
+                            <td>Conservative and Unionist Party</td>
+                        </tr>
+                        <tr>
+                            <td>Aldridge-Brownhills</td>
+                            <td>England</td>
+                            <td>Wendy Morton</td>
+                            <td>Conservative and Unionist Party</td>
+                        </tr>
+                        <tr>
+                            <td>Altrincham and Sale West</td>
+                            <td>England</td>
+                            <td>Sir Graham Brady</td>
+                            <td>Conservative and Unionist Party</td>
+                        </tr>
+                        <tr>
+                            <td>Amber Valley</td>
+                            <td>England</td>
+                            <td>Nigel Mills</td>
+                            <td>Conservative and Unionist Party</td>
+                        </tr>
+                        <tr>
+                            <td>Arundel and South Downs</td>
+                            <td>England</td>
+                            <td>Andrew Griffith</td>
+                            <td>Conservative and Unionist Party</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--Head of Government Info-->
+                <h4 class="text-left">Prime Minister (Head of Government)</h4>
+
+                <!--Secretary of State Info-->
+                <h4 class="text-left">Secretaries of State</h4>
+
+                <!--Lower House Info-->
+                <h4 class="text-left">Members of the House of Commons (Lower House of Parliament)</h4>
+            </div>
+        </div>
+
+        <!--Body Section - Home-->
+        <div class="row" id="loginOrRegBody">
+            <div class="col-sm-12">
+                <h3 id="lowerBodyText" class="text-left">Last election results and incumbent government</h3>
+
+            </div>
+        </div>
 
 </body>
 </html>
