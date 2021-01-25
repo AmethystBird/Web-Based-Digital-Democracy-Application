@@ -16,45 +16,100 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+
+        function main() {
+            var newContents = document.getElementById("logRegBody1");
+            newContents.style.display = "none";
+            newContents = document.getElementById("loginOrRegister");
+            newContents.style.display = "none";
+            newContents = document.getElementById("citizenCandidateOrParty");
+            newContents.style.display = "none";
+        }
+
+        //$("#logRegBody1").css("visibility", "hidden");
+        //$("#loginOrRegister").css("visibility", "hidden");
+
+        /*window.addEventListener("load", TestFunction());
+
+        function TestFunction() {
+            document.getElementById("unconditionalBodyText").innerHTML = "Swiggity Swag";
+        }*/
+
         function changeInfo(clicked_id) {
             //var element = document.getElementById("rightTab");
             //element.innerHTML = "Text changed";
 
             if (clicked_id == "leftTab") {
+                var oldContents = document.getElementById("homeBody");
+                oldContents.style.display = "block";
+
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Welcome to the UK General Election site. You can register an account which will give you access to voting for your local MP in the next general election. This site also allows you to sign up as a candidate in an election. Below you may view, and search by filtering, all incumbent MPs in relation to their constituency seats.";
 
                 //body - home
-                document.getElementById("lowerBodyText").innerHTML = "Last election results and incumbent government";
+                //document.getElementById("lowerBodyText").innerHTML = "Last election results and incumbent government";
             }
             else if (clicked_id == "centreTab") {
+                var oldContents = document.getElementById("homeBody");
+                oldContents.style.display = "none";
+
                 //body - unconditional
-                document.getElementById("unconditionalBodyText").innerHTML = "Click to vote";
+                document.getElementById("unconditionalBodyText").innerHTML = "Below is a complete list all of the candidates running for your constitutency. It also includes any political party affiliations. If there is currently a general election on, you may vote immediately.";
 
                 //body - WIP
-                document.getElementById("lowerBodyText").innerHTML = "Selectable list of candidates from your constituency";
+                //document.getElementById("lowerBodyText").innerHTML = "Selectable list of candidates from your constituency";
             }
             else if (clicked_id == "rightTab") {
+                var oldContents = document.getElementById("homeBody");
+                oldContents.style.display = "none";
+
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Election-related information and decisions";
 
                 //body - WIP
-                document.getElementById("lowerBodyText").innerHTML = "Amendable personal details";
+                //document.getElementById("lowerBodyText").innerHTML = "Amendable personal details";
             }
             else if (clicked_id == "loginOrReg") {
-                //body - unconditional
-                document.getElementById("unconditionalBodyText").innerHTML = "Login or register?";
-
-                //body - loginOrReg
-
-
                 var oldContents = document.getElementById("homeBody");
                 oldContents.style.display = "none";
+
+                //debug
+                //var debugForceHide = document.getElementById("lowerBodyText");
+                //debugForceHide.style.display = "none";
+
+                //body - unconditional
+                document.getElementById("unconditionalBodyText").innerHTML = "Here you may login or register an account. This account may be a regular citizen account, or a collective political party account.";
+
+                //body - loginOrReg
+                var newContents = document.getElementById("logRegBody1");
+                newContents.style.display = "block";
+                newContents = document.getElementById("loginOrRegister");
+                newContents.style.display = "block";
+                //newContents = document.getElementById("citizenCandidateOrParty");
+                //newContents.style.display = "block";
+            }
+        }
+
+        function loginOrRegSection(clicked_id) {
+
+            if (clicked_id == "login") {
+                document.getElementById(upperBodyTextLogReg).innerHTML = "Login as a citizen, a candidate, or a political party"
+                document.getElementById("login").innerHTML = "Go back";
+                document.getElementById("").innerHTML = "Citizen";
+                //document.getElementById("").innerHTML = "Candidate";
+                //document.getElementById("").innerHTML = "Political Party";
+            }
+            else if (clicked_id == "register") {
+                document.getElementById(upperBodyTextLogReg).innerHTML = "Register as a citizen, a candidate, or a political party"
+                document.getElementById("login").innerHTML = "Go back";
+                document.getElementById("").innerHTML = "Citizen";
+                //document.getElementById("").innerHTML = "Candidate";
+                //document.getElementById("").innerHTML = "Political Party";
             }
 
-            /*document.getElementById("leftTab").innerHTML = "Text changed";
-            document.getElementById("centreTab").innerHTML = "Text changed";
-            document.getElementById("rightTab").innerHTML = "Text changed";*/
+            if (stage1 == true) {
+                
+            }
         }
 
         function searchConstituency() {
@@ -152,8 +207,18 @@
         margin-bottom: 0.5em;
     }
 
+    /*#logRegBody1 {
+        visibility: hidden;
+    }
+    #loginOrRegister {
+        visibility: hidden;
+    }
+    #citizenCandidateOrParty {
+        visibility: hidden;
+    }*/
+
 </style>
-<body>
+<body onload="main()">
     <div class="container-fluid">
 
         <!--Login/Register-->
@@ -255,14 +320,31 @@
             </div>
         </div>
 
-        <!--Body Section - Home-->
-        <div class="row" id="loginOrRegBody">
+        <!--Body Section - Login/Register-->
+        <div class="row" id="logRegBody1">
             <div class="col-sm-12">
-                <h3 id="lowerBodyText" class="text-left">Last election results and incumbent government</h3>
-
+                <h3 id="upperBodyTextLogReg" class="text-left">Login or register?</h3>
             </div>
         </div>
-
+        <div class="row" id="loginOrRegister">
+            <div class="col-sm-6">
+                <button type="button" class="btn-block btn"><h2 id="login" onclick="loginOrReg(this.id)" class="text-center">Login</h2></button>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" class="btn-block btn"><h2 id="register" onclick="loginOrReg(this.id)" class="text-center">Register</h2></button>
+            </div>
+        </div>
+        <div class="row" id="citizenCandidateOrParty">
+            <div class="col-sm-4">
+                <button type="button" class="btn-block btn"><h2 id="citizen" onclick="loginOrReg(this.id)" class="text-center">Citizen</h2></button>
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn-block btn"><h2 id="candidate" onclick="loginOrReg(this.id)" class="text-center">Candidate</h2></button>
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn-block btn"><h2 id="politicalParty" onclick="loginOrReg(this.id)" class="text-center">Political Party</h2></button>
+            </div>
+        </div>
 </body>
 </html>
 
