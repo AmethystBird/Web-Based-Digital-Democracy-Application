@@ -39,44 +39,29 @@
             //var element = document.getElementById("rightTab");
             //element.innerHTML = "Text changed";
 
+            var oldContents = document.getElementById("homeBody");
+            oldContents.style.display = "none";
+            oldContents = document.getElementById("logRegBody1");
+            oldContents.style.display = "none";
+            oldContents = document.getElementById("loginOrRegister");
+            oldContents.style.display = "none";
+
             if (clicked_id == "leftTab") {
-                var oldContents = document.getElementById("homeBody");
-                oldContents.style.display = "block";
+                var newContents = document.getElementById("homeBody");
+                newContents.style.display = "block";
 
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Welcome to the UK General Election site. You can register an account which will give you access to voting for your local MP in the next general election. This site also allows you to sign up as a candidate in an election. Below you may view, and search by filtering, all incumbent MPs in relation to their constituency seats.";
-
-                //body - home
-                //document.getElementById("lowerBodyText").innerHTML = "Last election results and incumbent government";
             }
             else if (clicked_id == "centreTab") {
-                var oldContents = document.getElementById("homeBody");
-                oldContents.style.display = "none";
-
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Below is a complete list all of the candidates running for your constitutency. It also includes any political party affiliations. If there is currently a general election on, you may vote immediately.";
-
-                //body - WIP
-                //document.getElementById("lowerBodyText").innerHTML = "Selectable list of candidates from your constituency";
             }
             else if (clicked_id == "rightTab") {
-                var oldContents = document.getElementById("homeBody");
-                oldContents.style.display = "none";
-
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Election-related information and decisions";
-
-                //body - WIP
-                //document.getElementById("lowerBodyText").innerHTML = "Amendable personal details";
             }
-            else if (clicked_id == "loginOrReg") {
-                var oldContents = document.getElementById("homeBody");
-                oldContents.style.display = "none";
-
-                //debug
-                //var debugForceHide = document.getElementById("lowerBodyText");
-                //debugForceHide.style.display = "none";
-
+            else if (clicked_id == "loginOrRegBtn") {
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Here you may login or register an account. This account may be a regular citizen account, or a collective political party account.";
 
@@ -85,12 +70,13 @@
                 newContents.style.display = "block";
                 newContents = document.getElementById("loginOrRegister");
                 newContents.style.display = "block";
+
                 //newContents = document.getElementById("citizenCandidateOrParty");
                 //newContents.style.display = "block";
             }
         }
 
-        function loginOrRegSection(clicked_id) {
+        function loginOrReg(clicked_id) {
 
             if (clicked_id == "login") {
                 document.getElementById(upperBodyTextLogReg).innerHTML = "Login as a citizen, a candidate, or a political party"
@@ -152,7 +138,7 @@
         color: #f0f0f0;
         background-color: #204080;
     }
-    table, td, th {
+    /*table, td, th {
         border: 1px solid #f0f0f0;
     }
     table {
@@ -171,22 +157,46 @@
     }
     td {
         text-align: left;
-    }
+    }*/
     tr:nth-child(even) {background-color: #183048;}
     tr:nth-child(odd) {background-color: #284058;}
 
-    thead, tbody {display: block; }
+    /*thead, tbody {display: block; }*/
 
-    tbody {
+    .tableFormatting {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 256px;
+    }
+
+    .tableFormatting thead th {
+        position: sticky;
+        top: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px 16px;
+    }
+
+    th {
+        background: #38685c;
+    }
+
+    /*tbody {
         height: 256px;
         width: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
-    }
+    }*/
 
-    tbody td, thead th {
+    /*tbody td, thead th {
         width: 20%;
-    }
+    }*/
 
     p {
         display: block;
@@ -226,7 +236,7 @@
             <div class="col-sm-10">
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn-block btn"><h5 id="loginOrReg" onclick="changeInfo(this.id)" class="text-center">Login/Register</h5></button>
+                <button type="button" class="btn-block btn"><h5 id="loginOrRegBtn" onclick="changeInfo(this.id)" class="text-center">Login/Register</h5></button>
             </div>
         </div>
 
@@ -266,48 +276,50 @@
 
                 <input type="text" id="userInput" onkeyup="searchConstituency()" placeholder="Search MPs based on Constituency..." />
 
-                <table id="MPConstituencyTable">
-                    <thead>
-                        <tr>
-                            <th>Constituency Seat</th>
-                            <th>Country</th>
-                            <th>Full Name</th>
-                            <th>Political Affiliation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Aldershot</td>
-                            <td>England</td>
-                            <td>Leo Docherty</td>
-                            <td>Conservative and Unionist Party</td>
-                        </tr>
-                        <tr>
-                            <td>Aldridge-Brownhills</td>
-                            <td>England</td>
-                            <td>Wendy Morton</td>
-                            <td>Conservative and Unionist Party</td>
-                        </tr>
-                        <tr>
-                            <td>Altrincham and Sale West</td>
-                            <td>England</td>
-                            <td>Sir Graham Brady</td>
-                            <td>Conservative and Unionist Party</td>
-                        </tr>
-                        <tr>
-                            <td>Amber Valley</td>
-                            <td>England</td>
-                            <td>Nigel Mills</td>
-                            <td>Conservative and Unionist Party</td>
-                        </tr>
-                        <tr>
-                            <td>Arundel and South Downs</td>
-                            <td>England</td>
-                            <td>Andrew Griffith</td>
-                            <td>Conservative and Unionist Party</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tableFormatting">
+                    <table id="MPConstituencyTable">
+                        <thead>
+                            <tr>
+                                <th>Constituency Seat</th>
+                                <th>Country</th>
+                                <th>Full Name</th>
+                                <th>Political Affiliation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aldershot</td>
+                                <td>England</td>
+                                <td>Leo Docherty</td>
+                                <td>Conservative and Unionist Party</td>
+                            </tr>
+                            <tr>
+                                <td>Aldridge-Brownhills</td>
+                                <td>England</td>
+                                <td>Wendy Morton</td>
+                                <td>Conservative and Unionist Party</td>
+                            </tr>
+                            <tr>
+                                <td>Altrincham and Sale West</td>
+                                <td>England</td>
+                                <td>Sir Graham Brady</td>
+                                <td>Conservative and Unionist Party</td>
+                            </tr>
+                            <tr>
+                                <td>Amber Valley</td>
+                                <td>England</td>
+                                <td>Nigel Mills</td>
+                                <td>Conservative and Unionist Party</td>
+                            </tr>
+                            <tr>
+                                <td>Arundel and South Downs</td>
+                                <td>England</td>
+                                <td>Andrew Griffith</td>
+                                <td>Conservative and Unionist Party</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <!--Head of Government Info-->
                 <h4 class="text-left">Prime Minister (Head of Government)</h4>
@@ -324,25 +336,25 @@
         <div class="row" id="logRegBody1">
             <div class="col-sm-12">
                 <h3 id="upperBodyTextLogReg" class="text-left">Login or register?</h3>
-            </div>
-        </div>
-        <div class="row" id="loginOrRegister">
-            <div class="col-sm-6">
-                <button type="button" class="btn-block btn"><h2 id="login" onclick="loginOrReg(this.id)" class="text-center">Login</h2></button>
-            </div>
-            <div class="col-sm-6">
-                <button type="button" class="btn-block btn"><h2 id="register" onclick="loginOrReg(this.id)" class="text-center">Register</h2></button>
-            </div>
-        </div>
-        <div class="row" id="citizenCandidateOrParty">
-            <div class="col-sm-4">
-                <button type="button" class="btn-block btn"><h2 id="citizen" onclick="loginOrReg(this.id)" class="text-center">Citizen</h2></button>
-            </div>
-            <div class="col-sm-4">
-                <button type="button" class="btn-block btn"><h2 id="candidate" onclick="loginOrReg(this.id)" class="text-center">Candidate</h2></button>
-            </div>
-            <div class="col-sm-4">
-                <button type="button" class="btn-block btn"><h2 id="politicalParty" onclick="loginOrReg(this.id)" class="text-center">Political Party</h2></button>
+                    <div class="row" id="loginOrRegister">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn-block btn"><h2 id="login" onclick="loginOrReg(this.id)" class="text-center">Login</h2></button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn-block btn"><h2 id="register" onclick="loginOrReg(this.id)" class="text-center">Register</h2></button>
+                        </div>
+                    </div>
+                    <div class="row" id="citizenCandidateOrParty">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn-block btn"><h2 id="citizen" onclick="loginOrReg(this.id)" class="text-center">Citizen</h2></button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn-block btn"><h2 id="candidate" onclick="loginOrReg(this.id)" class="text-center">Candidate</h2></button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn-block btn"><h2 id="politicalParty" onclick="loginOrReg(this.id)" class="text-center">Political Party</h2></button>
+                        </div>
+                    </div>
             </div>
         </div>
 </body>
