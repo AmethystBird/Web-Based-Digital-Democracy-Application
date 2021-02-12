@@ -55,25 +55,25 @@
             }
             else if (clicked_id == "centreTab") {
                 //body - unconditional
-                document.getElementById("unconditionalBodyText").innerHTML = "Below is a complete list all of the candidates running for your constitutency. It also includes any political party affiliations. If there is currently a general election on, you may vote immediately.";
+                document.getElementById("unconditionalBodyText").innerHTML = "Below is a complete list all of the candidates running for your constituency. It also includes any political party affiliations. If there is currently a general election on, you may vote immediately.";
             }
             else if (clicked_id == "rightTab") {
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Election-related information and decisions";
             }
-            else if (clicked_id == "loginOrRegBtn") {
+            else if (clicked_id == "login") {
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Here you may login or register an account. This account may be a regular citizen account, or a collective political party account.";
 
                 //body - loginOrReg
-                var newContents = document.getElementById("logRegBody1");
-                newContents.style.display = "block";
-                newContents = document.getElementById("loginOrRegister");
+                var newContents = document.getElementById("loginDisplay");
                 newContents.style.display = "block";
 
                 //newContents = document.getElementById("citizenCandidateOrParty");
                 //newContents.style.display = "block";
             }
+
+            //Testing stuff
         }
 
         function loginOrReg(clicked_id) {
@@ -94,7 +94,7 @@
             }
 
             if (stage1 == true) {
-                
+
             }
         }
 
@@ -212,9 +212,19 @@
     input {
         width: 100%;
         font-size: 16px;
-        padding: 12px 20px 12px 40px;
+        padding: 12px 20px 12px 20px;
         border: 1px solid #f0f0f0;
         margin-bottom: 0.5em;
+    }
+
+    #loginRadio, #registerRadio {
+        display: block;
+    }
+
+    #submitRegDetails {
+        padding: 3px 4px;
+        font-size: 20px;
+        border-radius: 3px;
     }
 
     /*#logRegBody1 {
@@ -229,6 +239,25 @@
 
 </style>
 <body onload="main()">
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" id="centreTab" onclick="changeInfo(this.id)">Vote Now</a>
+                    </li>
+                    <a>Page 1</a>
+                    <a>Page 2</a>
+                    <a>Page 3</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div class="container-fluid">
 
         <!--Login/Register-->
@@ -236,7 +265,7 @@
             <div class="col-sm-10">
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn-block btn"><h5 id="loginOrRegBtn" onclick="changeInfo(this.id)" class="text-center">Login/Register</h5></button>
+                <!--<button type="button" class="btn-block btn"><h5 id="loginOrRegBtn" onclick="changeInfo(this.id)" class="text-center">Login/Register</h5></button>-->
             </div>
         </div>
 
@@ -251,14 +280,14 @@
         <!--Tabs-->
         <div class="row">
             <div class="col-sm-3">
-                <button type="button" class="btn-block btn"><h2 id="leftTab" onclick="changeInfo(this.id)" class="text-center">Home</h2></button>
+                <!--<button type="button" class="btn-block btn"><h2 id="leftTab" onclick="changeInfo(this.id)" class="text-center">Home</h2></button>-->
             </div>
             <div class="col-sm-6">
                 <!--<h2 id="VN" class="text-center">Vote Now</h2>-->
-                <button type="button" class="btn-block btn"><h2 id="centreTab" onclick="changeInfo(this.id)" class="text-center">Vote Now</h2></button>
+                <!--<button type="button" class="btn-block btn"><h2 id="centreTab" onclick="changeInfo(this.id)" class="text-center">Vote Now</h2></button>-->
             </div>
             <div class="col-sm-3">
-                <button type="button" class="btn-block btn"><h2 id="rightTab" onclick="changeInfo(this.id)" class="text-center">My Page</h2></button>
+                <!--<button type="button" class="btn-block btn"><h2 id="rightTab" onclick="changeInfo(this.id)" class="text-center">My Page</h2></button>-->
             </div>
         </div>
 
@@ -336,33 +365,59 @@
         <div class="row" id="logRegBody1">
             <div class="col-sm-12">
                 <h3 id="upperBodyTextLogReg" class="text-left">Login or register?</h3>
-                    <div class="row" id="loginOrRegister">
-                        <div class="col-sm-6">
-                            <button type="button" class="btn-block btn"><h2 id="login" onclick="loginOrReg(this.id)" class="text-center">Login</h2></button>
+                <form>
+                    <!--<div id="loginOrRegister">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="loginOrRegRadios" id="loginRadio" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Login</label>
                         </div>
-                        <div class="col-sm-6">
-                            <button type="button" class="btn-block btn"><h2 id="register" onclick="loginOrReg(this.id)" class="text-center">Register</h2></button>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="loginOrRegRadios" id="registerRadio" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Register</label>
+                        </div>
+                    </div>-->
+                    <div id="loginDisplay">
+                        <label>Email Address:</label>
+                        <input type="email" class="form-control" id="emailLog" />
+                        <label>Password:</label>
+                        <input type="password" class="form-control" id="passwordLog" />
+                        <label>Confirm Password:</label>
+                        <input type="password" class="form-control" id="confirmPasswordLog" />
+                        <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center">Submit</h2></button>
+                    </div>
+                    <div class="row" id="registerDisplay">
+                        <div class="col-sm-4">
+                            <label>First Name:</label>
+                            <input class="form-control" id="firstNameReg" />
+                            <label>Email Address:</label>
+                            <input type="email" class="form-control" id="emailReg" />
+                            <label>Password:</label>
+                            <input type="password" class="form-control" id="passwordReg" />
+                            <label>Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirmPasswordReg" />
+                            <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center">Submit</h2></button>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>National Insurance Number:</label>
+                            <input class="form-control" id="nationalInsuranceNumberReg" />
+                            <label>Nationalities (WIP):</label>
+                            <input class="form-control" id="nationalityReg" />
+                            <label>Residential Address:</label>
+                            <input class="form-control" id="addressReg" />
+                            <label>Birthday:</label>
+                            <input type="date" class="form-control" id="birthdayReg" />
                         </div>
                     </div>
-                    <div class="row" id="citizenCandidateOrParty">
-                        <div class="col-sm-4">
-                            <button type="button" class="btn-block btn"><h2 id="citizen" onclick="loginOrReg(this.id)" class="text-center">Citizen</h2></button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn-block btn"><h2 id="candidate" onclick="loginOrReg(this.id)" class="text-center">Candidate</h2></button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn-block btn"><h2 id="politicalParty" onclick="loginOrReg(this.id)" class="text-center">Political Party</h2></button>
-                        </div>
-                    </div>
+                </form>
             </div>
         </div>
+    </div>
 </body>
-</html>
+    </html>
 
-<!--
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-    //-->
+    <!--
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+        //-->
