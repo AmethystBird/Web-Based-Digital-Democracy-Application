@@ -43,8 +43,9 @@
             oldContents.style.display = "none";
             oldContents = document.getElementById("logRegBody1");
             oldContents.style.display = "none";
-            oldContents = document.getElementById("loginOrRegister");
-            oldContents.style.display = "none";
+            /*oldContents = document.getElementById("loginOrRegister");
+            oldContents.style.display = "none";*/
+            //document.getElementById("unconditionalBodyText").innerHTML = "How un-pogchamp of you, Javascript";
 
             if (clicked_id == "leftTab") {
                 var newContents = document.getElementById("homeBody");
@@ -63,12 +64,33 @@
             }
             else if (clicked_id == "login") {
                 //body - unconditional
-                document.getElementById("unconditionalBodyText").innerHTML = "Here you may login or register an account. This account may be a regular citizen account, or a collective political party account.";
+                document.getElementById("unconditionalBodyText").innerHTML = "Here you may login with a pre-existing account. This account may be a regular citizen account, or a collective political party account.";
 
                 //body - loginOrReg
-                var newContents = document.getElementById("loginDisplay");
+                var newContents = document.getElementById("logRegBody1");
                 newContents.style.display = "block";
+                newContents = document.getElementById("loginDisplay");
+                newContents.style.display = "block";
+                newContents = document.getElementById("registerDisplay");
+                newContents.style.display = "none";
 
+                //other stuff v
+                //newContents = document.getElementById("citizenCandidateOrParty");
+                //newContents.style.display = "block";
+            }
+            else if (clicked_id == "register") {
+                //body - unconditional
+                document.getElementById("unconditionalBodyText").innerHTML = "Here you may register an account. This account may be a regular citizen account, or a collective political party account.";
+
+                //body - loginOrReg
+                var newContents = document.getElementById("logRegBody1");
+                newContents.style.display = "block";
+                newContents = document.getElementById("registerDisplay");
+                newContents.style.display = "block";
+                newContents = document.getElementById("loginDisplay");
+                newContents.style.display = "none";
+
+                //other stuff v
                 //newContents = document.getElementById("citizenCandidateOrParty");
                 //newContents.style.display = "block";
             }
@@ -119,9 +141,57 @@
             }
         }
 
-        $(window).resize(function () {
+        function citizenCandidateorParty(clicked_id) {
+            if (clicked_id == "citizenLog") {
+                accountType = "citizen";
+                document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Citizen";
+            }
+            else if (clicked_id == "partyLog") {
+                accountType = "party";
+                document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Political Party";
+            }
+            else if (clicked_id == "adminLog") {
+                accountType = "admin";
+                document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Administrator";
+            }
+        }
 
-        }).resize();
+        function saveDetails() {
+            //functionality debug
+            //var firstName = document.getElementById("firstNameReg").value; //gets input value
+            //document.getElementById("emailReg").value = firstName; //sets input value
+        }
+
+        var accountType = new String("");
+        var allAccounts = new Object();
+
+        class account {
+            constructor(password, passwordConfirm) {
+                var password = String("");
+                var passwordConfirm = String("");
+
+                function comparePasswordInputs() {
+                    if (password == passwordConfirm) {
+                        //do stuff here
+                    }
+                }
+            }
+        }
+
+        class citizenAccount extends account {
+            constructor(firstName, email, NIN, nationalities, resAddress, birthday) {
+                var firstName = String("");
+                var email = String("");
+                var NIN = String("");
+                var nationalities = String("");
+                var resAddress = String("");
+                var birthday = String("");
+            }
+        }
+
+        /*$(window).resize(function () {
+
+        }).resize();*/
 
     </script>
 </head>
@@ -241,18 +311,25 @@
 <body onload="main()">
 
     <header>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-expand-sm bg-dark">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
+                    <a class="navbar-brand" id="leftTab" onclick="changeInfo(this.id)">UK Gov General Elections</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" id="centreTab" onclick="changeInfo(this.id)">Vote Now</a>
                     </li>
-                    <a>Page 1</a>
-                    <a>Page 2</a>
-                    <a>Page 3</a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="rightTab" onclick="changeInfo(this.id)">My Page</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" id="login" onclick="changeInfo(this.id)">Login</a>
+                            <a class="dropdown-item" id="register" onclick="changeInfo(this.id)">Register</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -363,20 +440,21 @@
 
         <!--Body Section - Login/Register-->
         <div class="row" id="logRegBody1">
-            <div class="col-sm-12">
-                <h3 id="upperBodyTextLogReg" class="text-left">Login or register?</h3>
+            <!--<h3 id="upperBodyTextLogReg" class="text-left">Logging in as: Citizen</h3>-->
                 <form>
-                    <!--<div id="loginOrRegister">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="loginOrRegRadios" id="loginRadio" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Login</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="loginOrRegRadios" id="registerRadio" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Register</label>
-                        </div>
-                    </div>-->
                     <div id="loginDisplay">
+                        <h3 id="upperBodyTextLog" class="text-left">Logging in as: Citizen</h3>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button type="button" id="citizenLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" id="partyLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" id="adminLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
+                            </div>
+                        </div>
                         <label>Email Address:</label>
                         <input type="email" class="form-control" id="emailLog" />
                         <label>Password:</label>
@@ -385,27 +463,45 @@
                         <input type="password" class="form-control" id="confirmPasswordLog" />
                         <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center">Submit</h2></button>
                     </div>
-                    <div class="row" id="registerDisplay">
-                        <div class="col-sm-4">
-                            <label>First Name:</label>
-                            <input class="form-control" id="firstNameReg" />
-                            <label>Email Address:</label>
-                            <input type="email" class="form-control" id="emailReg" />
-                            <label>Password:</label>
-                            <input type="password" class="form-control" id="passwordReg" />
-                            <label>Confirm Password:</label>
-                            <input type="password" class="form-control" id="confirmPasswordReg" />
-                            <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center">Submit</h2></button>
+                    <div id="registerDisplay">
+                        <h3 id="upperBodyTextReg" class="text-left">Registering as: Citizen</h3>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button type="button" id="citizenReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" id="partyReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" id="adminReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
+                            </div>
                         </div>
-                        <div class="col-sm-4">
-                            <label>National Insurance Number:</label>
-                            <input class="form-control" id="nationalInsuranceNumberReg" />
-                            <label>Nationalities (WIP):</label>
-                            <input class="form-control" id="nationalityReg" />
-                            <label>Residential Address:</label>
-                            <input class="form-control" id="addressReg" />
-                            <label>Birthday:</label>
-                            <input type="date" class="form-control" id="birthdayReg" />
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>First Name:</label>
+                                <input class="form-control" id="firstNameReg" />
+                                <label>Email Address:</label>
+                                <input type="email" class="form-control" id="emailReg" />
+                                <label>Password:</label>
+                                <input type="password" class="form-control" id="passwordReg" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Confirm Password:</label>
+                                <input type="password" class="form-control" id="confirmPasswordReg" />
+                                <label>National Insurance Number:</label>
+                                <input class="form-control" id="nationalInsuranceNumberReg" />
+                                <label>Nationalities (WIP):</label>
+                                <input class="form-control" id="nationalityReg" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Residential Address:</label>
+                                <input class="form-control" id="addressReg" />
+                                <label>Birthday:</label>
+                                <input type="date" class="form-control" id="birthdayReg" />
+                                <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center" onclick="saveDetails(this.id)">Submit</h2></button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -413,7 +509,7 @@
         </div>
     </div>
 </body>
-    </html>
+</html>
 
     <!--
     <div class="text-center">
