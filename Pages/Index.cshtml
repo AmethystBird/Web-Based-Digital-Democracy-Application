@@ -17,6 +17,7 @@
 
     <script>
 
+        //sets up what is visible on the web application on site load
         function main() {
             var newContents = document.getElementById("logRegBody1");
             newContents.style.display = "none";
@@ -26,15 +27,7 @@
             newContents.style.display = "none";
         }
 
-        //$("#logRegBody1").css("visibility", "hidden");
-        //$("#loginOrRegister").css("visibility", "hidden");
-
-        /*window.addEventListener("load", TestFunction());
-
-        function TestFunction() {
-            document.getElementById("unconditionalBodyText").innerHTML = "Swiggity Swag";
-        }*/
-
+        //Main function for modifying contents of web application based on user interaction
         function changeInfo(clicked_id) {
             //var element = document.getElementById("rightTab");
             //element.innerHTML = "Text changed";
@@ -98,6 +91,7 @@
             //Testing stuff
         }
 
+        //Type something here
         function loginOrReg(clicked_id) {
 
             if (clicked_id == "login") {
@@ -120,6 +114,7 @@
             }
         }
 
+        //Takes user input and filters a table for associated information
         function searchConstituency() {
             var input = document.getElementById("userInput");
             var filter = input.value.toLowerCase();
@@ -141,6 +136,7 @@
             }
         }
 
+        //Takes user input for logging in account type options
         function citizenCandidateorParty(clicked_id) {
             if (clicked_id == "citizenLog") {
                 accountType = "citizen";
@@ -156,25 +152,10 @@
             }
         }
 
-        function saveDetails() {
-            //functionality debug
-            //var firstName = document.getElementById("firstNameReg").value; //gets input value
-            //document.getElementById("emailReg").value = firstName; //sets input value
-        }
-
-        var accountType = new String("");
-        var allAccounts = new Object();
-
         class account {
             constructor(password, passwordConfirm) {
                 var password = String("");
                 var passwordConfirm = String("");
-
-                function comparePasswordInputs() {
-                    if (password == passwordConfirm) {
-                        //do stuff here
-                    }
-                }
             }
         }
 
@@ -186,6 +167,69 @@
                 var nationalities = String("");
                 var resAddress = String("");
                 var birthday = String("");
+
+                function collectDetails() {
+                    //functionality debug
+                    //var firstName = document.getElementById("firstNameReg").value; //gets input value
+                    //document.getElementById("emailReg").value = firstName; //sets input value
+
+                    firstName = document.getElementById("firstNameReg").value;
+                    email = document.getElementById("emailReg").value;
+                    password = document.getElementById("passwordReg").value;
+                    passwordConfirm = document.getElementById("confirmPasswordReg").value;
+                    NIN = document.getElementById("nationalInsuranceReg").value;
+                    nationalities = document.getElementById("nationalityReg").value;
+                    resAddress = document.getElementById("addressReg").value;
+                    birthday = document.getElementById("birthdayReg").value;
+
+                    allDetailsFilled();
+                }
+
+                function allDetailsFilled() {
+                    //assign values then:
+                    if (firstName != null && email != null && NIN != null && nationalities != null && resAddress != null && birthday != null && password != null && passwordConfirm != null) {
+                        comparePasswordInputs();
+                    }
+                }
+
+                function comparePasswordInputs() {
+                    if (password == passwordConfirm) {
+                        //password was correct
+                    }
+                }
+            }
+        }
+
+        class partyAccount extends account {
+            constructor(partyName, email, headquartersAddress) {
+                var partyName = String("");
+                var email = String("");
+                var headquartersAddress = String("");
+                //add some more eventually
+
+                function allDetailsFilled() {
+                    if (partyName != null && email != null && headquartersAddress != null) {
+                        comparePasswordInputs();
+                    }
+                }
+            }
+        }
+
+        class adminAccount extends account {
+            constructor(firstName, email, NIN, nationalities, resAddress, birthday) {
+                var firstName = String("");
+                var email = String("");
+                var NIN = String("");
+                var nationalities = String("");
+                var resAddress = String("");
+                var birthday = String("");
+                //add some more eventually
+
+                function allDetailsFilled() {
+                    if (firstName != null && email != null && NIN != null && nationalities != null && resAddress != null && birthday != null && password != null && passwordConfirm != null) {
+                        comparePasswordInputs();
+                    }
+                }
             }
         }
 
@@ -500,6 +544,7 @@
                                 <input class="form-control" id="addressReg" />
                                 <label>Birthday:</label>
                                 <input type="date" class="form-control" id="birthdayReg" />
+                                <p id="defunctCredentialsReg">Placeholder text</p>
                                 <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center" onclick="saveDetails(this.id)">Submit</h2></button>
                             </div>
                         </div>
@@ -507,7 +552,6 @@
                 </form>
             </div>
         </div>
-    </div>
 </body>
 </html>
 
