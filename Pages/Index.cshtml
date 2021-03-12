@@ -27,6 +27,7 @@
             newContents.style.display = "none";
         }
 
+        var loggingInOrRegistering = 2;
         //Main function for modifying contents of web application based on user interaction
         function changeInfo(clicked_id) {
             //var element = document.getElementById("rightTab");
@@ -56,6 +57,8 @@
                 document.getElementById("unconditionalBodyText").innerHTML = "Election-related information and decisions";
             }
             else if (clicked_id == "login") {
+                loggingInOrRegistering = 0;
+
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Here you may login with a pre-existing account. This account may be a regular citizen account, or a collective political party account.";
 
@@ -72,6 +75,8 @@
                 //newContents.style.display = "block";
             }
             else if (clicked_id == "register") {
+                loggingInOrRegistering = 1;
+
                 //body - unconditional
                 document.getElementById("unconditionalBodyText").innerHTML = "Here you may register an account. This account may be a regular citizen account, or a collective political party account.";
 
@@ -136,72 +141,185 @@
             }
         }
 
+        var accountTypeChoice = "";
         //Takes user input for logging in account type options
         function citizenCandidateorParty(clicked_id) {
-            if (clicked_id == "citizenLog") {
-                accountType = "citizen";
-                document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Citizen";
-            }
-            else if (clicked_id == "partyLog") {
-                accountType = "party";
-                document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Political Party";
-            }
-            else if (clicked_id == "adminLog") {
-                accountType = "admin";
-                document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Administrator";
-            }
-        }
-
-        class account {
-            constructor(password, passwordConfirm) {
-                var password = String("");
-                var passwordConfirm = String("");
-            }
-        }
-
-        class citizenAccount extends account {
-            constructor(firstName, email, NIN, nationalities, resAddress, birthday) {
-                var firstName = String("");
-                var email = String("");
-                var NIN = String("");
-                var nationalities = String("");
-                var resAddress = String("");
-                var birthday = String("");
-
-                function collectDetails() {
-                    //functionality debug
-                    //var firstName = document.getElementById("firstNameReg").value; //gets input value
-                    //document.getElementById("emailReg").value = firstName; //sets input value
-
-                    firstName = document.getElementById("firstNameReg").value;
-                    email = document.getElementById("emailReg").value;
-                    password = document.getElementById("passwordReg").value;
-                    passwordConfirm = document.getElementById("confirmPasswordReg").value;
-                    NIN = document.getElementById("nationalInsuranceReg").value;
-                    nationalities = document.getElementById("nationalityReg").value;
-                    resAddress = document.getElementById("addressReg").value;
-                    birthday = document.getElementById("birthdayReg").value;
-
-                    allDetailsFilled();
+            if (loggingInOrRegistering == 0) {
+                if (clicked_id == "citizenLogOrReg") {
+                    accountTypeChoice = "citizen";
+                    document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Citizen";
                 }
+                else if (clicked_id == "partyLogOrReg") {
+                    accountTypeChoice = "party";
+                    document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Political Party";
+                }
+                else if (clicked_id == "adminLogOrReg") {
+                    accountTypeChoice = "admin";
+                    document.getElementById("upperBodyTextLog").innerHTML = "Logging in as: Administrator";
+                }
+            }
+            else if (loggingInOrRegistering == 1) {
+                if (clicked_id == "citizenLogOrReg") {
+                    accountTypeChoice = "citizen";
+                    document.getElementById("upperBodyTextLog").innerHTML = "Registering as: Citizen";
+                }
+                else if (clicked_id == "partyLogOrReg") {
+                    accountTypeChoice = "party";
+                    document.getElementById("upperBodyTextLog").innerHTML = "Registering as: Political Party";
+                }
+                else if (clicked_id == "adminLogOrReg") {
+                    accountTypeChoice = "admin";
+                    document.getElementById("upperBodyTextLog").innerHTML = "Registering as: Administrator";
+                }
+            }
+        }
 
-                function allDetailsFilled() {
-                    //assign values then:
-                    if (firstName != null && email != null && NIN != null && nationalities != null && resAddress != null && birthday != null && password != null && passwordConfirm != null) {
-                        comparePasswordInputs();
+        var citizenAccounts = new Object();
+        var IDCounter = 0;
+
+        //Directly acquires the user's inputted details
+        function saveDetails() {
+            document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: saveDetails() ran";
+            password = document.getElementById("passwordReg").value;
+            passwordConfirm = document.getElementById("confirmPasswordReg").value;
+
+            //checks if password inputs matched & if a national insurance number was inputted; creates account if both are true
+            if (password != "") {
+                document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: password was not null";
+                if (password == passwordConfirm) {
+                    document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: passwords match";
+                    if (accountTypeChoice == "citizen") {
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: was citizen account";
+                        //if ((document.getElementById("nationalInsuranceReg").value != null) && (NIN = document.getElementById("nationalInsuranceReg").value == String)) {
+                        //var NIN = document.getElementById("nationalInsuranceReg").value;
+
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not instantiate single class";
+                        let onlyAccount = new SpecialAccount(); //test one
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run single class";
+                        onlyAccount.doSomething();
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could run single class";
+                        /*citizenAccounts[IDCounter] = new citizenAccount(); correct one
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run class";
+                        citizenAccounts[IDCounter].doSomething();
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could run class";
+                        IDCounter++;*/
+
+                        //let NIN = new citizenAccount();
+                        //NIN.collectDetails();
+                        //NIN.doSomething();
+                        //}
+                    }
+                    else if (accountTypeChoice == "party") {
+
+                    }
+                    else if (accountTypeChoice == "admin") {
+
                     }
                 }
+            }
+            //password inputs did not match
+            else {
+                document.getElementById("passwordReg").innerHTML = "";
+                document.getElementById("confirmPasswordReg").innerHTML = "";
+                document.getElementById("defunctCredentialsReg").innerHTML = "Password and password confirmation do not match.";
+            }
+        }
 
-                function comparePasswordInputs() {
-                    if (password == passwordConfirm) {
-                        //password was correct
-                    }
+        //example vv
+        class Car {
+            constructor(brand) {
+                this.carname = brand;
+            }
+            present() {
+                return 'I have a ' + this.carname;
+            }
+        }
+
+        class Model extends Car {
+            constructor(brand, mod) {
+                super(brand);
+                this.model = mod;
+            }
+            show() {
+                return this.present() + ', it is a ' + this.model;
+            }
+        }
+        //example ^^
+
+        class ClassName {
+            constructor() {}
+            method_1() {
+                var peanus;
+            }
+            method_2() {}
+            method_3() {}
+        }
+
+        class Account {
+            constructor() {
+                this.password = "";
+                this.passwordConfirm = "";
+            }
+        }
+
+        //for testing
+        class SpecialAccount extends Account {
+            constructor() {
+                super.password = "";
+                super.passwordConfirm = "";
+                this.uniqueVariable = "";
+            }
+        }
+
+        class CitizenAccount extends Account {
+            constructor() {
+                super.password = "";
+                super.passwordConfirm = "";
+
+                this.firstName = "";
+                this.email = "";
+                this.NIN = "";
+                this.nationalities = "";
+                this.resAddress = "";
+                this.birthday = "";
+            }
+
+            collectDetails() {
+                //functionality debug
+                //var firstName = document.getElementById("firstNameReg").value; //gets input value
+                //document.getElementById("emailReg").value = firstName; //sets input value
+
+                this.firstName = document.getElementById("firstNameReg").value;
+                this.email = document.getElementById("emailReg").value;
+                super.password = document.getElementById("passwordReg").value;
+                super.passwordConfirm = document.getElementById("confirmPasswordReg").value;
+                this.NIN = document.getElementById("nationalInsuranceReg").value;
+                this.nationalities = document.getElementById("nationalityReg").value;
+                this.resAddress = document.getElementById("addressReg").value;
+                this.birthday = document.getElementById("birthdayReg").value;
+
+                allDetailsFilled();
+            }
+
+            doSomething() {
+                document.getElementById("defunctCredentialsReg").innerHTML = "Pingas";
+            }
+
+            allDetailsFilled() {
+                //assign values then:
+                if (this.firstName != null && this.email != null && this.NIN != null && this.nationalities != null && this.resAddress != null && this.birthday != null && super.password != null && super.passwordConfirm != null) {
+                    //success
+                }
+                else {
+                    document.getElementById("defunctCredentialsReg").innerHTML = "Missing required information.";
+                    //this == null;
+                    //document.getElementById("defunctCredentialsReg").innerHTML = "DID NOT DELETE CLASS INSTANTIATION";
                 }
             }
         }
 
-        class partyAccount extends account {
-            constructor(partyName, email, headquartersAddress) {
+        class PartyAccount extends Account {
+            constructor() {
                 var partyName = String("");
                 var email = String("");
                 var headquartersAddress = String("");
@@ -215,7 +333,7 @@
             }
         }
 
-        class adminAccount extends account {
+        class AdminAccount extends Account {
             constructor(firstName, email, NIN, nationalities, resAddress, birthday) {
                 var firstName = String("");
                 var email = String("");
@@ -484,73 +602,85 @@
 
         <!--Body Section - Login/Register-->
         <div class="row" id="logRegBody1">
-            <!--<h3 id="upperBodyTextLogReg" class="text-left">Logging in as: Citizen</h3>-->
-                <form>
-                    <div id="loginDisplay">
-                        <h3 id="upperBodyTextLog" class="text-left">Logging in as: Citizen</h3>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <button type="button" id="citizenLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" id="partyLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" id="adminLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
-                            </div>
-                        </div>
-                        <label>Email Address:</label>
-                        <input type="email" class="form-control" id="emailLog" />
-                        <label>Password:</label>
-                        <input type="password" class="form-control" id="passwordLog" />
-                        <label>Confirm Password:</label>
-                        <input type="password" class="form-control" id="confirmPasswordLog" />
-                        <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center">Submit</h2></button>
-                    </div>
-                    <div id="registerDisplay">
-                        <h3 id="upperBodyTextReg" class="text-left">Registering as: Citizen</h3>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <button type="button" id="citizenReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" id="partyReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" id="adminReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>First Name:</label>
-                                <input class="form-control" id="firstNameReg" />
-                                <label>Email Address:</label>
-                                <input type="email" class="form-control" id="emailReg" />
-                                <label>Password:</label>
-                                <input type="password" class="form-control" id="passwordReg" />
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Confirm Password:</label>
-                                <input type="password" class="form-control" id="confirmPasswordReg" />
-                                <label>National Insurance Number:</label>
-                                <input class="form-control" id="nationalInsuranceNumberReg" />
-                                <label>Nationalities (WIP):</label>
-                                <input class="form-control" id="nationalityReg" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Residential Address:</label>
-                                <input class="form-control" id="addressReg" />
-                                <label>Birthday:</label>
-                                <input type="date" class="form-control" id="birthdayReg" />
-                                <p id="defunctCredentialsReg">Placeholder text</p>
-                                <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center" onclick="saveDetails(this.id)">Submit</h2></button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <h3 id="upperBodyTextLog" class="text-left">Logging in as: Citizen</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" id="citizenLogOrReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" id="partyLogOrReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" id="adminLogOrReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
+                </div>
             </div>
+            <!--<h3 id="upperBodyTextLogReg" class="text-left">Logging in as: Citizen</h3>-->
+            <form>
+                <div id="loginDisplay">
+                    <!--<h3 id="upperBodyTextLog" class="text-left">Logging in as: Citizen</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" id="citizenLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" id="partyLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" id="adminLog" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
+                </div>
+            </div>-->
+                    <label>Email Address:</label>
+                    <input type="email" class="form-control" id="emailLog" />
+                    <label>Password:</label>
+                    <input type="password" class="form-control" id="passwordLog" />
+                    <label>Confirm Password:</label>
+                    <input type="password" class="form-control" id="confirmPasswordLog" />
+                    <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center">Submit</h2></button>
+                </div>
+                <div id="registerDisplay">
+                    <!--<h3 id="upperBodyTextReg" class="text-left">Registering as: Citizen</h3>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button type="button" id="citizenReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Citizen</h2></button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" id="partyReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Party</h2></button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" id="adminReg" class="btn-sm" onclick="citizenCandidateorParty(this.id)"><h2 class="text-center">Admin</h2></button>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>First Name:</label>
+                            <input class="form-control" id="firstNameReg" />
+                            <label>Email Address:</label>
+                            <input type="email" class="form-control" id="emailReg" />
+                            <label>Password:</label>
+                            <input type="password" class="form-control" id="passwordReg" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirmPasswordReg" />
+                            <label>National Insurance Number:</label>
+                            <input class="form-control" id="nationalInsuranceNumberReg" />
+                            <label>Nationalities (WIP):</label>
+                            <input class="form-control" id="nationalityReg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Residential Address:</label>
+                            <input class="form-control" id="addressReg" />
+                            <label>Birthday:</label>
+                            <input type="date" class="form-control" id="birthdayReg" />
+                            <p id="defunctCredentialsReg">Placeholder text</p>
+                            <button type="button" class="btn-sm"><h2 id="submitRegDetails" class="text-center" onclick="saveDetails(this.id)">Submit</h2></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         </div>
 </body>
 </html>
