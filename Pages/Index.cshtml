@@ -196,8 +196,8 @@
                         document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not instantiate single class";
                         let onlyAccount = new SpecialAccount(); //test one
                         document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run single class";
-                        onlyAccount.doSomething();
-                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could run single class";
+                        onlyAccount.examplemethod();
+                        //document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could run single class";
                         /*citizenAccounts[IDCounter] = new citizenAccount(); correct one
                         document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run class";
                         citizenAccounts[IDCounter].doSomething();
@@ -265,11 +265,22 @@
         //for testing
         class SpecialAccount extends Account {
             constructor() {
+                super();
+                this.uniqueVariable = "";
+            }
+
+            examplemethod() {
+                document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: mega pogchampo";
+            };
+        }
+
+        /*class SpecialAccount extends Account {
+            constructor() {
                 super.password = "";
                 super.passwordConfirm = "";
                 this.uniqueVariable = "";
             }
-        }
+        }*/
 
         class CitizenAccount extends Account {
             constructor() {
