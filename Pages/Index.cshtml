@@ -183,9 +183,10 @@
             password = document.getElementById("passwordReg").value;
             passwordConfirm = document.getElementById("confirmPasswordReg").value;
 
-            //checks if password inputs matched & if a national insurance number was inputted; creates account if both are true
-            if (password != "") {
+            //checks if password inputs exist in both slots
+            if ((password != "" && passwordConfirm != "") || (password != "" || passwordConfirm != "")) { //doesn't work perfectly
                 document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: password was not null";
+                //checks if password inputs matched & if a national insurance number was inputted; creates account if both are true
                 if (password == passwordConfirm) {
                     document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: passwords match";
                     if (accountTypeChoice == "citizen") {
@@ -194,20 +195,24 @@
                         //var NIN = document.getElementById("nationalInsuranceReg").value;
 
                         document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not instantiate single class";
-                        let onlyAccount = new SpecialAccount(); //test one
-                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run single class";
-                        onlyAccount.examplemethod();
-                        //document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could run single class";
-                        /*citizenAccounts[IDCounter] = new citizenAccount(); correct one
-                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run class";
-                        citizenAccounts[IDCounter].doSomething();
-                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could run class";
-                        IDCounter++;*/
+                        //let onlyAccount = new CitizenAccount(); //test one
 
-                        //let NIN = new citizenAccount();
-                        //NIN.collectDetails();
-                        //NIN.doSomething();
-                        //}
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not convert to string";
+                        var currentPos = IDCounter.toString();
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not add to dictionary";
+                        citizenAccounts[currentPos] = new CitizenAccount();
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not access dictionary";
+
+                        var currentAccount = citizenAccounts[currentPos];
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not use class from dictionary";
+                        currentAccount.collectDetails();
+
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not enter class";
+                        //citizenAccounts[IDCounter].collectDetails();
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not modify ID Counter";
+                        IDCounter++;
+                        document.getElementById("defunctCredentialsReg").innerHTML = "DEBUG: could not run single class";
+                        //onlyAccount.collectDetails();
                     }
                     else if (accountTypeChoice == "party") {
 
@@ -216,49 +221,22 @@
 
                     }
                 }
+                //password inputs did not match
+                else {
+                    document.getElementById("passwordReg").innerHTML = "";
+                    document.getElementById("confirmPasswordReg").innerHTML = "";
+                    document.getElementById("defunctCredentialsReg").innerHTML = "Password and password confirmation do not match.";
+                }
             }
-            //password inputs did not match
             else {
-                document.getElementById("passwordReg").innerHTML = "";
-                document.getElementById("confirmPasswordReg").innerHTML = "";
-                document.getElementById("defunctCredentialsReg").innerHTML = "Password and password confirmation do not match.";
+                document.getElementById("defunctCredentialsReg").innerHTML = "Password is blank.";
             }
-        }
-
-        //example vv
-        class Car {
-            constructor(brand) {
-                this.carname = brand;
-            }
-            present() {
-                return 'I have a ' + this.carname;
-            }
-        }
-
-        class Model extends Car {
-            constructor(brand, mod) {
-                super(brand);
-                this.model = mod;
-            }
-            show() {
-                return this.present() + ', it is a ' + this.model;
-            }
-        }
-        //example ^^
-
-        class ClassName {
-            constructor() {}
-            method_1() {
-                var peanus;
-            }
-            method_2() {}
-            method_3() {}
         }
 
         class Account {
             constructor() {
-                this.password = "";
-                this.passwordConfirm = "";
+                this.password;
+                this.passwordConfirm;
             }
         }
 
@@ -274,15 +252,46 @@
             };
         }
 
-        /*class SpecialAccount extends Account {
-            constructor() {
-                super.password = "";
-                super.passwordConfirm = "";
-                this.uniqueVariable = "";
-            }
-        }*/
-
         class CitizenAccount extends Account {
+            constructor() {
+                super(password, passwordConfirm);
+                this.firstName;
+                this.email;
+                this.NIN;
+                this.nationalities;
+                this.resAddress;
+                this.birthday;
+            }
+
+            collectDetails() {
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() started";
+                this.firstName = document.getElementById("firstNameReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected firstName";
+                this.email = document.getElementById("emailReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected email";
+                this.password = document.getElementById("passwordReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected password";
+                this.passwordConfirm = document.getElementById("confirmPasswordReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected password confirmation";
+                this.NIN = document.getElementById("nationalInsuranceNumberReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected nin";
+                this.nationalities = document.getElementById("nationalityReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected nationality";
+                this.resAddress = document.getElementById("addressReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() collected address";
+                this.birthday = document.getElementById("birthdayReg").value;
+                document.getElementById("defunctCredentialsReg").innerHTML = "collectDetails() acquired info";
+
+                if (this.firstName != "" && this.email != "" && this.NIN != "" && this.nationalities != "" && this.resAddress != "" && this.birthday != "" && this.password != null && this.passwordConfirm != null) {
+                    document.getElementById("defunctCredentialsReg").innerHTML = "Credentials inputted successfully";
+                }
+                else {
+                    document.getElementById("defunctCredentialsReg").innerHTML = "Missing required information.";
+                }
+            }
+        }
+
+        class OldCitizenAccount extends Account {
             constructor() {
                 super.password = "";
                 super.passwordConfirm = "";
@@ -329,7 +338,7 @@
             }
         }
 
-        class PartyAccount extends Account {
+        class OldPartyAccount extends Account {
             constructor() {
                 var partyName = String("");
                 var email = String("");
@@ -344,7 +353,7 @@
             }
         }
 
-        class AdminAccount extends Account {
+        class OldAdminAccount extends Account {
             constructor(firstName, email, NIN, nationalities, resAddress, birthday) {
                 var firstName = String("");
                 var email = String("");
